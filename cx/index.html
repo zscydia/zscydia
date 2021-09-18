@@ -1,0 +1,391 @@
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<html><head>
+    <style type="text/css">
+        html, table {
+            font-size: 15px;
+        }
+
+        .content {
+            border: 1px solid #cccccc;
+            height: 200px;
+            box-shadow: 1px 1px 8px #e0e0e0;
+            margin-top: 20px;
+        }
+
+        .box-shadow {
+            box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function () { moli(); } 
+
+        var anhao = '5232a3421e642b12e32b1451226dde00';
+        function jiazai() {
+            var anhaoCookie = getCookie('anhao');
+            if (anhaoCookie != anhao) {
+                moli();
+            }
+        }
+
+        function moli() {
+            $.confirm({
+                theme: 'Modern',
+                title: '验证后进入',
+                content: '' +
+                    '<form action="" class="formName">' +
+                    '<div class="form-group">' +
+                    '<img src="https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/2400422131e4ee0d7eaf44c555c6aa192a3484646af5d5d2f3761d0fcea13e0184693003ba8db40706ae344e7cd765bb?pictype=scale&from=30113&version=3.3.3.3&uin=281475094324466&fname=%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210914200544.jpg&size=750" />' +
+                    '<br/>' +
+                    '<h5 class="text-center">扫码联系客服【朱少网络科技】</h5>' +
+                    '<h5 class="text-center">在线客服咨询 “<span style="color:red;">👮</span>” 无需添加好友</h5>' +
+                    '<h5 class="text-center"> <a href="https://work.weixin.qq.com/kfid/kfc61876cf3d521262e">点击进入客服咨询</a></h5>' +
+                    '<br/>' +
+                    '<input type="text" placeholder="请输入正确密码访问" class="name form-control" required />' +
+                    '</div>' +
+                    '</form>',
+                buttons: {
+                    formSubmit: {
+                        text: '提交',
+                        btnClass: 'btn-blue',
+                        action: function () {
+                            var name = md5(this.$content.find('.name').val());
+                            if (name == anhao) {
+                                //setCookie('anhao', anhao);
+                                return true;
+                            } else {
+                                $.alert('密码错误！！<br/>请联系客服 获取正确密码！');
+                                return false;
+                            }
+                            return false;
+                        }
+                    },
+                },
+                onContentReady: function () {
+                    var jc = this;
+                    this.$content.find('form').on('submit', function (e) {
+                        e.preventDefault();
+                        jc.$formSubmit.trigger('click');
+                    });
+                }
+            });
+        }
+
+        function zanzhu() {
+            $.alert({
+                theme: 'Modern',
+                boxWidth: '800px',
+                useBootstrap: false,
+                backgroundDismiss: true,
+                title: '捐助我们',
+                content: '' +
+                    '<form action="" class="formName">' +
+                    '<img style="width:1000px;" src="http://cdn2.ziti4.com//qrcode/uploaded/e6/67/54edaa1fbd69eba217c6d035a552.jpg!larger2" />' +
+                    '</form>',
+            });
+        }
+
+        function setCookie(name, value) {
+            var Days = 3;
+            var exp = new Date();
+            exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+            document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+        }
+        function getCookie(name) {
+            var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+            if (arr != null)
+                return unescape(arr[2]);
+            return null;
+        }
+    </script>
+
+    <script type="text/javascript">
+        //屏蔽右键菜单
+        document.oncontextmenu = function (event) {
+            if (window.event) {
+                event = window.event;
+            }
+            try {
+                var the = event.srcElement;
+                if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")) {
+                    return false;
+                }
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+        
+        //禁止Ctrl+U
+        var arr = [123, 17, 18];
+        document.oncontextmenu = new Function("event.returnValue=false;"), //禁用右键
+
+            window.onkeydown = function (e) {
+                var keyCode = e.keyCode || e.which || e.charCode;
+                var ctrlKey = e.ctrlKey || e.metaKey;
+                console.log(keyCode + "--" + keyCode);
+                if (ctrlKey && keyCode == 85) {
+                    e.preventDefault();
+                }
+                if (arr.indexOf(keyCode) > -1) {
+                    e.preventDefault();
+                }
+            }
+        
+        document.onkeydown = function (event) {
+            if ((event.keyCode == 112) || //屏蔽 F1
+                (event.keyCode == 113) || //屏蔽 F2
+                (event.keyCode == 114) || //屏蔽 F3
+                (event.keyCode == 115) || //屏蔽 F4
+                // (event.keyCode == 116) || //屏蔽 F5
+                (event.keyCode == 117) || //屏蔽 F6
+                (event.keyCode == 118) || //屏蔽 F7
+                (event.keyCode == 119) || //屏蔽 F8
+                (event.keyCode == 120) || //屏蔽 F9
+                (event.keyCode == 121) || //屏蔽 F10
+                (event.keyCode == 122) || //屏蔽 F11
+                (event.keyCode == 123)) //屏蔽 F12
+            {
+                return false;
+            }
+        }
+        window.onhelp = function () {
+            return false;
+        }
+    </script>
+<title>免费Q绑查询</title>
+<link href="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<link href="https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.13.0/js/md5.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" id="mixia_vpid">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link href="http://lib.baomitu.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="http://lib.baomitu.com/layer/3.1.1/layer.js"></script><link rel="stylesheet" href="http://lib.baomitu.com/layer/3.1.1/theme/default/layer.css?v=3.1.1" id="layuicss-layer">
+<link rel="stylesheet" href="http://lib.baomitu.com/layer/3.1.1/theme/default/layer.css?v=3.1.1" id="layuicss-layer">
+<link rel="stylesheet" href="http://lib.baomitu.com/layer/3.1.1/theme/default/layer.css?v=3.1.1" id="layuicss-layer">
+<link rel="stylesheet" href="http://lib.baomitu.com/layer/3.1.1/theme/default/layer.css?v=3.1.1" id="layuicss-layer">
+</head>
+     
+      
+<body background="images/7f0c40d4gy1fqbfh91nf9j21hc0u0q62.jpg"><br>
+<center>
+<span id="localtime"><font color="#FF3030">2021-09-09丨19:38:10丨星期四</font></span><script type="text/javascript">function showLocale(objD)
+{var str,colorhead,colorfoot;var yy = objD.getYear();
+if(yy<1900) yy = yy+1900;
+        var MM = objD.getMonth()+1;
+    if(MM<10) MM = '0' + MM;
+    var dd = objD.getDate();
+    if(dd<10) dd = '0' + dd;
+    var hh = objD.getHours();
+    if(hh<10) hh = '0' + hh;
+    var mm = objD.getMinutes();
+    if(mm<10) mm = '0' + mm;
+    var ss = objD.getSeconds();
+    if(ss<10) ss = '0' + ss;
+    var ww = objD.getDay();
+    if  ( ww==0 )  colorhead="<font color=\"#FF3030\">";
+    if  ( ww > 0 && ww < 6 )  colorhead="<font color=\"#FF3030\">";
+    if  ( ww==6 )  colorhead="<font color=\"#FF3030\">";
+    if  (ww==0)  ww="星期日";
+    if  (ww==1)  ww="星期一";
+    if  (ww==2)  ww="星期二";
+    if  (ww==3)  ww="星期三";
+    if  (ww==4)  ww="星期四";
+    if  (ww==5)  ww="星期五";
+    if  (ww==6)  ww="星期六";
+    colorfoot="</font>"
+    str = colorhead + yy + "-" + MM + "-" + dd + "丨" + hh + ":" + mm + ":" + ss + "丨" + ww + colorfoot;
+    return(str);}function tick()
+{var today;today = new Date();document.getElementById("localtime").innerHTML = showLocale(today);window.setTimeout("tick()", 1000);}
+tick();</script>
+</center>
+ <center> 
+<img border="0" src="http://cdn2.ziti4.com//qrcode/uploaded/7c/d7/4cb4ff6cfb740d8060b2d3de6a57.jpg!larger2" alt="朱少工作室制作:微信17080808606" width="230px" height="130px"><p></p>
+</center>
+<marquee><font color="#FF00FF">本</font><font color="#FB00FF">站</font><font color="#F700FF">公</font><font color="#F300FF">告</font><font color="#EF00FF">提</font><font color="#EB00FF">示</font><font color="#E700FF">！</font><font color="#E300FF">禁</font><font color="#DF00FF">止</font><font color="#DB00FF">使</font><font color="#D700FF">用</font><font color="#D300FF">本</font><font color="#CF00FF">站</font><font color="#CB00FF">用</font><font color="#C700FF">于</font><font color="#C300FF">非</font><font color="#BF00FF">法</font><font color="#BB00FF">途</font><font color="#B700FF">径</font><font color="#B300FF">、</font><font color="#AF00FF">仅</font><font color="#AB00FF">共</font><font color="#A700FF">自</font><font color="#A300FF">己</font><font color="#9F00FF">使</font><font color="#9B00FF">用</font><font color="#9700FF">查</font><font color="#9300FF">看</font><font color="#8F00FF">自</font><font color="#8B00FF">己</font><font color="#8700FF">的</font><font color="#8300FF">Q</font><font color="#7F00FF">是</font><font color="#7B00FF">否</font><font color="#7700FF">泄</font><font color="#7300FF">露</font><font color="#6F00FF">，</font><font color="#6B00FF">如</font><font color="#6700FF">已</font><font color="#6300FF">已</font><font color="#5F00FF">泄</font><font color="#5B00FF">露</font><font color="#5700FF">请</font><font color="#5300FF">立</font><font color="#4F00FF">即</font><font color="#4B00FF">更</font><font color="#4700FF">换</font><font color="#4300FF">Q</font><font color="#3F00FF">Q</font><font color="#3B00FF">密</font><font color="#3700FF">保</font><font color="#3300FF">手</font><font color="#2F00FF">机</font><font color="#2B00FF">号</font><font color="#2700FF">码</font><font color="#2300FF">，</font><font color="#1F00FF">侵</font><font color="#1B00FF">权</font><font color="#1700FF">联</font><font color="#1300FF">系</font><font color="#0F00FF">立</font><font color="#0B00FF">删</font></marquee>
+<!--[if lt IE 9]>
+<script src="//lib.baomitu.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="//lib.baomitu.com/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <script>
+    document.oncontextmenu=new Function("event.returnValue=false;"); //禁止右键功能
+    document.onkeydown=MM_KeyPress;
+    function  MM_KeyPress(num){
+        //防止系统退格键
+        var keycODe = event.keyCODe;
+        if(keycode ==8)//屏蔽退格健
+        {
+            event.keyCode = 0;
+            return;
+        }
+        if(keycode >=122 && keycode <=123)//屏蔽f12功能键
+        {
+            event.keyCode = 0 ;
+            event.returnValue=false;
+            return;
+        }
+    }
+    function gg(){
+    layer.alert('仅共自己使用查看自己的Q是否泄露<br>如已已泄露请立即更换QQ密保手机号码', {
+  icon: 1,
+  title: '注意',
+  skin: 'layer-ext-moon'
+})
+}
+function click(e) {
+if (document.all) {
+if (event.button==2||event.button==3) { alert("欢迎光临寒舍，有什么需要帮忙的话，请与站长联系！谢谢您的合作！！！");
+oncontextmenu='return false';
+}
+}
+if (document.layers) {
+if (e.which == 3) {
+oncontextmenu='return false';
+}
+}
+}
+if (document.layers) {
+document.captureEvents(Event.MOUSEDOWN);
+}
+document.onmousedown=click;
+document.oncontextmenu = new Function("return false;")
+document.onkeydown =document.onkeyup = document.onkeypress=function(){
+if(window.event.keyCode == 123) {
+window.event.returnValue=false;
+return(false);
+}
+}
+</script>
+
+								  
+<div class="fudong"></div>
+<div class="container">	
+<div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 center-block" style="float: none;">
+<br>
+<div class="panel panel-primary">
+<div class="panel-heading" style="background: linear-gradient(to right,#b221ff,#14b7ff,#8ae68a);">
+<h3 class="panel-title">Q绑在线查询</h3>
+</div>
+<div class="panel-body" style="text-align: center;">
+<div class="list-group">
+<div class="list-group-item list-group-item-warning" style="font-weight: bold;">
+<span>输入QQ号码即可查询密保手机</span>
+</div>
+<div class="list-group-item list-group-item-info" style="font-weight: bold;">
+<input class="form-control" id="input" placeholder="请输入QQ">
+</div>
+<div class="list-group-item">
+<a onclick="qbang('cha')" class="btn btn-block btn-primary" style="background: linear-gradient(to right,#b221ff,#14b7ff);">开始查找</a>
+<!--</div>
+<div class="list-group-item">
+<a onclick="qbang('jiabai')" class="btn btn-block btn-primary" style="background: linear-gradient(to right,#5abdd8,#14b7ff);">加白</a>-->
+</div>
+<div class="list-group-item">
+<a href="http://cx.65ie.cn/sj.html" class="btn btn-block btn-primary" style="background: linear-gradient(to right,#5abdd8,#14b7ff);">手机号反查QQ</a>
+</div>
+
+<div class="list-group-item">
+<a href="http://zskeji.shop/" class="btn btn-block btn-primary" style="background: linear-gradient(to right,#5abdd8,#14b7ff);">在线客服</a>
+</div>
+
+</div>
+<div class="list-group-item">
+<div class="list-group-item list-group-item-warning" style="font-weight: bold;display: none;" id="jiexi_data">
+<div class="input-group">
+<span class="input-group-addon">手机号</span>
+<input type="text" class="form-control" placeholder="" id="mobile">
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+<div class="panel panel-default text-center">
+<div class="panel-body">
+© 2021  Q绑在线查询
+
+<div class="alert alert-danger" role="alert">
+<div style="text-align:center;">仅共自己使用查看自己的Q是否泄露<br>批量查询请联系客服！<br>♥♥♥更多福利资源♥♥♥
+<br>
+
+<a target="_blank" href="http://zshoow.com/" type="button" class="btn btn-info"><span <="" span="">多功能商城</span></a>
+                                        <a target="_blank" href="http://zshoow.com/" type="button" class="btn btn-success"><span <="" span="">更多福利</span></a>
+
+
+                            </div>
+
+
+</div></div></div></div></div>
+<script>
+function qbang($mod) {
+var qq = $('#input').val();
+if (qq == '') {
+var alert_1 = layer.msg('请输入QQ', { icon: 5 });
+} else {
+
+if($mod=='cha'){
+dialog('<div style="text-align:center"><br><b style="color:#ff4425">仅供查询自己的QQ号码<br>不是自己的请立即退出本页面<br>否则，发生的一切后果本人不负责<br><br>确认查询？？</b><br><br><a onclick='+'queren("cha")'+' class="btn btn-block btn-primary" style="background: linear-gradient(to right,#b221ff,#14b7ff);">确认</a><br></div>', 1);
+}else{
+dialog('<div style="text-align:center"><div class="list-group-item list-group-item-info" style="font-weight: bold;"><input class="form-control" id="key" placeholder="请输入key"></div><b style="color:#ff4425">加白只是在本站无法查找，并不代表全网，请知悉<a onclick='+'queren("jiabai")'+' class="btn btn-block btn-primary" style="background: linear-gradient(to right,#b221ff,#14b7ff);">加白</a><br></div>', 1);
+}
+
+}
+}
+function queren(mod) {
+console.log(mod);
+layer.close(layer.index);
+var qq = $('#input').val();
+if(mod=='cha'){
+$url = 'https://cxx.yun7.me/qqcx?qq='+qq;
+}else{
+var key = $('#key').val();
+$url = 'http://api.vcanzi.cn/qb-api.php?mod=jiabai&key='+key+'&qq='+qq;
+}
+
+var alert_1 = layer.load(0, { shade: false });
+$.getJSON($url, function (json) {
+layer.close(alert_1);
+if (json['status'] == 200 && json['message'] == '查询成功') {
+layer.msg('查询成功', { icon: 1 });
+$('#mobile').val(json['phone']);
+$('#jiexi_data').css("display", "block");
+} else {
+layer.msg(json['msg']);
+$('#jiexi_data').css("display", "none");
+}
+}
+);
+}
+function dialog(code, exit) {
+layer.open({
+type: 1,
+skin: 'layui-layer-lan', //加上边框
+area: ['350px', ''], //宽高
+closeBtn: exit,
+shade: 0.8,
+title: '提示',
+btnAlign: 'c',
+content: code,
+});
+}
+gg()
+</script><div class="layui-layer-move"></div>
+
+<div class="layui-layer-move">
+</div>
+
+ <!-- 朱少独家背景音乐代码，微信:17080808606 -->
+	<audio autoplay="autoplay" loop="">
+		<source src="http://cdn2.ziti4.com//qrcode/uploaded/f0/05/7a32b5ec23e6c68bd689b2464f08.mp3" type="audio/mpeg">
+	</audio>	        
+
+
+
+
+</body></html>
